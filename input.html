@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <script>
+
+            const menu = {
+                burger: [
+                    {
+                        name: '🍔',
+                        time: 3000
+                    },
+                    {
+                        name: '🍟',
+                        time: 750
+                    },
+                    {
+                        name: '☕',
+                        time: 600
+                    }
+                ],
+                hotDog: [
+                    {
+                        name: '🌭',
+                        time: 2500
+                    },
+                    {
+                        name: '🍹',
+                        time: 450
+                    }
+                ],
+                pizza: [
+                    {
+                        name: '🍕',
+                        time: 2600
+                    },
+                    {
+                        name: '🧉',
+                        time: '400'
+                    }
+                ]
+            };
+
+            function order(menuName) {
+                console.log('Start cooking...');
+
+                const result = [];
+
+                const foo = (obj) => {
+                    result.push(obj);
+                }
+
+                let setComplete = () => {
+                    let ifComplete = !Math.round(Math.random());
+
+                    if (ifComplete){
+                        return ifComplete;
+                    } else{
+                        console.log('NOT READY');
+                        return ifComplete;
+                    }
+                }
+
+                function cooking({name, time}) {
+                    setTimeout(function() {
+                        let isComplete = setComplete();
+                        if (isComplete){
+                            return foo({name, isComplete, isComplete}, 'return'); 
+                        }
+                    }(), time);
+                };
+
+
+                menuName.forEach((item, index) => {
+                    while (result.length <= index) {
+                        cooking(item);
+                    }
+                });
+
+                console.log('READY', result);
+//                return result
+            };
+
+            console.log(order(menu.burger));
+        </script>
+
+    </body>
+</html>
